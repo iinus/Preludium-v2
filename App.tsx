@@ -2,6 +2,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { StyleSheet } from "react-native";
+import StartScreen from "./src/screens/StartScreen";
+import ChoosePacketScreen from "./src/screens/ChoosePacketScreen";
+import PlayScreen from "./src/screens/PlayScreen";
 
 const Stack = createStackNavigator();
 
