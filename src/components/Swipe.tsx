@@ -6,41 +6,70 @@ import {
   PanResponder,
   Animated,
   Dimensions,
+  Platform,
 } from "react-native";
 
+const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCREEN_HEIGHT = Dimensions.get("window").height;
+const SWIPE_RIGHT_THRESHOLD = 0.5 * SCREEN_WIDTH;
+const SWIPE_LEFT_THRESHOLD = -0.5 * SCREEN_WIDTH;
+const SWIPE_OUT_DURATION = 300;
+
 const styles = StyleSheet.create({
-  detailWrapper: {
-    marginBottom: 10,
+  background: {
+    backgroundColor: "#03444E",
+    width: "100%",
+    height: "100%",
+  },
+  textWrapper: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   cardStyle: {
-    height: 400,
-    width: 300,
+    position: "absolute",
+    height: SCREEN_HEIGHT * 0.6,
+    width: SCREEN_WIDTH * 0.75,
+    marginLeft: SCREEN_WIDTH * 0.125,
+    marginTop: SCREEN_HEIGHT * 0.2,
     borderWidth: 3,
     borderColor: "black",
     borderRadius: 25,
-    backgroundColor: "white",
-    display: "flex",
-    flexDirection: "column",
+    backgroundColor: "#F7F4EC",
+  },
+  cardBehindStyle: {
+    position: "absolute",
+    height: SCREEN_HEIGHT * 0.6,
+    width: SCREEN_WIDTH * 0.7,
+    marginLeft: SCREEN_WIDTH * 0.15,
+    marginTop: SCREEN_HEIGHT * 0.18,
+    borderWidth: 3,
+    borderColor: "black",
+    borderRadius: 25,
+    backgroundColor: "#F7F4EC",
   },
   cardType: {
     padding: 20,
     alignSelf: "center",
     fontSize: 24,
+    textAlign: "center",
+    //fontFamily: "Space Mono",
   },
   cardQuestion: {
-    margin: 5,
     alignSelf: "center",
+    width: SCREEN_WIDTH * 0.6,
+    textAlign: "center",
+    marginBottom: SCREEN_HEIGHT * 0.2,
+    //fontFamily: "Roboto",
+    fontSize: 18,
+    lineHeight: 21,
   },
 });
 
 interface ISwipeProps {
   data: any;
 }
-
-const SCREEN_WIDTH = Dimensions.get("window").width;
-const SWIPE_RIGHT_THRESHOLD = 0.5 * SCREEN_WIDTH;
-const SWIPE_LEFT_THRESHOLD = -0.5 * SCREEN_WIDTH;
-const SWIPE_OUT_DURATION = 250;
 
 const Swipe = ({ data }: ISwipeProps) => {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -96,32 +125,42 @@ const Swipe = ({ data }: ISwipeProps) => {
   };
 
   const onSwipeComplete = () => {
-    position.setValue({ x: 0, y: 0 });
     setCurrentIndex(currentIndex + 1);
+    position.setValue({ x: 0, y: 0 });
   };
 
   const cardItem = (card: any) => {
+    if (card.index < currentIndex) {
+      return null;
+    }
     return card.index === currentIndex ? (
       <Animated.View
         key={card.index}
         {..._panResponder.panHandlers}
         style={[getCardStyle(position), styles.cardStyle]}
       >
-        <View style={styles.detailWrapper}>
+        <View style={styles.textWrapper}>
           <Text style={styles.cardType}>{card.type}</Text>
           <Text style={styles.cardQuestion}>{card.question}</Text>
         </View>
       </Animated.View>
     ) : (
-      <View />
+      <Animated.View key={card.index} style={styles.cardBehindStyle}>
+        <View style={styles.textWrapper}>
+          <Text style={styles.cardType}>{card.type}</Text>
+          <Text style={styles.cardQuestion}>{card.question}</Text>
+        </View>
+      </Animated.View>
     );
   };
 
   const cardsToCardItem = (data: any) => {
-    return data.map((Object: Object) => cardItem(Object));
+    let cards = data.map((Object: Object) => cardItem(Object));
+    cards = Platform.OS === "android" ? cards : cards.reverse();
+    return cards;
   };
 
-  return <View>{cardsToCardItem(data)}</View>;
+  return <View style={styles.background}>{cardsToCardItem(data)}</View>;
 };
 
 export default Swipe;

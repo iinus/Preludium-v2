@@ -5,17 +5,7 @@ import Swipe from "../components/Swipe";
 import data from "../data/data";
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  button: {
-    color: "blue",
-  },
-  text: {
-    color: "purple",
-  },
+  container: {},
 });
 
 const PlayScreen = () => {
