@@ -1,6 +1,6 @@
 # Preludium
 
-Investa is a mobile application for e-learning and investment.
+Preludium is a drinking game app.
 
 ## Prerequisites
 
