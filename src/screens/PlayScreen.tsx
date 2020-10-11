@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
 const PlayScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Preludium play</Text>
       <Swipe data={data}></Swipe>
     </View>
   );
