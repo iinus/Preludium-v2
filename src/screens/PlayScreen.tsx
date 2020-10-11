@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
+import Swipe from "../components/Swipe";
+import data from "../data/data";
 
 const styles = StyleSheet.create({
   container: {
@@ -16,10 +18,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const PlayScreen = ({ navigation }: NavigationStackProp) => {
+const PlayScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Preludium play</Text>
+      <Swipe data={data}></Swipe>
     </View>
   );
 };
