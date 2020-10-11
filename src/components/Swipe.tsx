@@ -1,12 +1,28 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { Card } from "react-native-elements";
 
 const styles = StyleSheet.create({
   detailWrapper: {
-    flexDirection: "column",
-    justifyContent: "space-around",
     marginBottom: 10,
+  },
+  cardStyle: {
+    height: "50%",
+    width: "80%",
+    borderWidth: 3,
+    borderColor: "black",
+    borderRadius: 25,
+    backgroundColor: "white",
+    display: "flex",
+    flexDirection: "column",
+  },
+  cardType: {
+    padding: 20,
+    alignSelf: "center",
+    fontSize: 24,
+  },
+  cardQuestion: {
+    margin: 5,
+    alignSelf: "center",
   },
 });
 
@@ -16,21 +32,17 @@ interface ISwipeProps {
 
 const Swipe = ({ data }: ISwipeProps) => {
   const renderCardItem = (card: any, index: number) => {
-    console.log(card.type);
     return (
-      <View style={{ height: 200, width: 200 }}>
-        <Card key={index}>
-          <View style={styles.detailWrapper}>
-            <Text>{card.type}</Text>
-            <Text>{card.question}</Text>
-          </View>
-        </Card>
+      <View key={index} style={styles.cardStyle}>
+        <View style={styles.detailWrapper}>
+          <Text style={styles.cardType}>{card.type}</Text>
+          <Text style={styles.cardQuestion}>{card.question}</Text>
+        </View>
       </View>
     );
   };
 
   const renderCards = (data: any) => {
-    console.log(data);
     return data.map((Object: Object) => renderCardItem(Object, data.index));
   };
 
