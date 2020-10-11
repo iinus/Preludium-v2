@@ -2,14 +2,6 @@ import React from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
 
-const PlayScreen = ({ navigation }: NavigationStackProp) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Preludium play</Text>
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -23,5 +15,13 @@ const styles = StyleSheet.create({
     color: "purple",
   },
 });
+
+const PlayScreen = ({ navigation }: NavigationStackProp) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Preludium play</Text>
+    </View>
+  );
+};
 
 export default PlayScreen;

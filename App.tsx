@@ -6,6 +6,15 @@ import StartScreen from "./src/screens/StartScreen";
 import ChoosePacketScreen from "./src/screens/ChoosePacketScreen";
 import PlayScreen from "./src/screens/PlayScreen";
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -19,12 +28,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
