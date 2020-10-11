@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 const ChoosePacketScreen = ({ navigation }: NavigationStackProp) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Preludium</Text>
+      <Text style={styles.text}>Choose packet</Text>
       <Button
         color="purple"
         title="NTNU"

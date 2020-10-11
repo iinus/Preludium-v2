@@ -1,6 +1,7 @@
 import React from "react";
-import { Text, View, StyleSheet, Button, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
+import { Button } from "../components/Button";
 
 const styles = StyleSheet.create({
   container: {
@@ -8,15 +9,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  button: {
-    color: "blue",
-  },
   text: {
     color: "purple",
   },
   img: {
-    width: 20,
-    height: "auto",
+    height: 45,
+    width: 240,
   },
 });
 
@@ -24,13 +22,11 @@ const StartScreen = ({ navigation }: NavigationStackProp) => {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../../assets/Logo.svg")}
+        source={require("../../assets/Preludium-logo.png")}
         style={styles.img}
       ></Image>
-      <Text style={styles.text}>Preludium</Text>
       <Button
-        color="purple"
-        title="Start"
+        text="Start"
         onPress={() => navigation.navigate("ChoosePacket")}
       />
     </View>
