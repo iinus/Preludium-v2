@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Swipe from "../components/Swipe";
 import data from "../data/data";
 
