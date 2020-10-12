@@ -11,8 +11,8 @@ import {
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
-const SWIPE_RIGHT_THRESHOLD = 0.5 * SCREEN_WIDTH;
-const SWIPE_LEFT_THRESHOLD = -0.5 * SCREEN_WIDTH;
+const SWIPE_RIGHT_THRESHOLD = 0.4 * SCREEN_WIDTH;
+const SWIPE_LEFT_THRESHOLD = -0.4 * SCREEN_WIDTH;
 const SWIPE_OUT_DURATION = 300;
 
 const styles = StyleSheet.create({
@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     flex: 1,
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
   },
   cardStyle: {
     position: "absolute",
@@ -50,18 +49,26 @@ const styles = StyleSheet.create({
     backgroundColor: "#F7F4EC",
   },
   cardType: {
-    padding: 20,
     alignSelf: "center",
-    fontSize: 24,
+    fontSize: 16,
     textAlign: "center",
-    //fontFamily: "Space Mono",
+    marginBottom: SCREEN_HEIGHT * 0.15,
+    marginTop: 44,
+    marginHorizontal: 10,
+    ...Platform.select({
+      ios: { fontFamily: "Courier" },
+      android: { fontFamily: "Space Mono" },
+    }),
+    fontWeight: "bold",
   },
   cardQuestion: {
     alignSelf: "center",
     width: SCREEN_WIDTH * 0.6,
     textAlign: "center",
-    marginBottom: SCREEN_HEIGHT * 0.2,
-    //fontFamily: "Roboto",
+    ...Platform.select({
+      ios: { fontFamily: "San Francisco" },
+      android: { fontFamily: "Roboto" },
+    }),
     fontSize: 18,
     lineHeight: 21,
   },
