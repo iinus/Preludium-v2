@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
-import { Button } from "../components/Button";
+import { ActiveButton } from "../components/ActiveButton";
 
 const styles = StyleSheet.create({
   container: {
@@ -25,7 +25,7 @@ const StartScreen = ({ navigation }: NavigationStackProp) => {
         source={require("../../assets/Preludium-logo.png")}
         style={styles.img}
       ></Image>
-      <Button
+      <ActiveButton
         text="Start"
         onPress={() => navigation.navigate("ChoosePacket")}
       />

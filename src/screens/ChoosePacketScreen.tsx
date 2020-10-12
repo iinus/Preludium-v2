@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, Platform } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
-import { Button } from "../components/Button";
+import { ActiveButton } from "../components/ActiveButton";
 
 const styles = StyleSheet.create({
   container: {
@@ -27,9 +27,18 @@ const ChoosePacketScreen = ({ navigation }: NavigationStackProp) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Velg pakke</Text>
-      <Button text="NTNU" onPress={() => navigation.navigate("PlayScreen")} />
-      <Button text="UiO" onPress={() => console.log("hello")} />
-      <Button text="BI" onPress={() => console.log("hello")} />
+      <ActiveButton
+        text="NTNU"
+        onPress={() => navigation.navigate("PlayScreen")}
+      />
+      <ActiveButton
+        text="UiO"
+        onPress={() => console.log("I should be an inactive button")}
+      />
+      <ActiveButton
+        text="BI"
+        onPress={() => console.log("I should be an inactive button")}
+      />
     </View>
   );
 };
