@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH * 0.6,
     textAlign: "center",
     ...Platform.select({
-      ios: { fontFamily: "San Francisco" },
+      ios: { fontFamily: "System" },
       android: { fontFamily: "Roboto" },
     }),
     fontSize: 18,

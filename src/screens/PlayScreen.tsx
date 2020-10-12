@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { NavigationStackProp } from "react-navigation-stack";
 import Swipe from "../components/Swipe";
 import data from "../data/data";
 
