@@ -1,25 +1,12 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { NavigationStackProp } from "react-navigation-stack";
+import { View } from "react-native";
+import Swipe from "../components/Swipe";
+import data from "../data/data";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  button: {
-    color: "blue",
-  },
-  text: {
-    color: "purple",
-  },
-});
-
-const PlayScreen = ({ navigation }: NavigationStackProp) => {
+const PlayScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Preludium play</Text>
+    <View>
+      <Swipe data={data}></Swipe>
     </View>
   );
 };

@@ -10,7 +10,13 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          title: "",
+          headerTintColor: "#fff",
+          headerTransparent: true,
+        }}
+      >
         <Stack.Screen name="Start" component={StartScreen} />
         <Stack.Screen name="ChoosePacket" component={ChoosePacketScreen} />
         <Stack.Screen name="PlayScreen" component={PlayScreen} />

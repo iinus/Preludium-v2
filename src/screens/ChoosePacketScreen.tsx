@@ -1,32 +1,44 @@
 import React from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet, Platform } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
+import { ActiveButton } from "../components/ActiveButton";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
-  button: {
-    color: "blue",
+    backgroundColor: "#03444E",
+    width: "100%",
+    height: "100%",
   },
   text: {
-    color: "purple",
+    color: "white",
+    padding: 10,
+    ...Platform.select({
+      ios: { fontFamily: "Courier" },
+      android: { fontFamily: "Space Mono" },
+    }),
+    fontWeight: "bold",
   },
 });
 
 const ChoosePacketScreen = ({ navigation }: NavigationStackProp) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Choose packet</Text>
-      <Button
-        color="purple"
-        title="NTNU"
+      <Text style={styles.text}>Velg pakke</Text>
+      <ActiveButton
+        text="NTNU"
         onPress={() => navigation.navigate("PlayScreen")}
       />
-      <Button color="purple" title="UiO" onPress={() => console.log("hello")} />
-      <Button color="purple" title="BI" onPress={() => console.log("hello")} />
+      <ActiveButton
+        text="UiO"
+        onPress={() => console.log("I should be an inactive button")}
+      />
+      <ActiveButton
+        text="BI"
+        onPress={() => console.log("I should be an inactive button")}
+      />
     </View>
   );
 };
