@@ -14,12 +14,13 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    padding: 10,
+    paddingBottom: 24,
+    fontSize: 14,
     ...Platform.select({
       ios: { fontFamily: "Courier" },
       android: { fontFamily: "Space Mono" },
     }),
-    fontWeight: "bold",
+    fontWeight: "700",
   },
 });
 
@@ -29,14 +30,17 @@ const ChoosePacketScreen = ({ navigation }: NavigationStackProp) => {
       <Text style={styles.text}>Velg pakke</Text>
       <ActiveButton
         text="NTNU"
+        textLine="Student i Trondheim"
         onPress={() => navigation.navigate("PlayScreen")}
       />
       <ActiveButton
         text="UiO"
+        textLine="kommer"
         onPress={() => console.log("I should be an inactive button")}
       />
       <ActiveButton
         text="BI"
+        textLine="kommer"
         onPress={() => console.log("I should be an inactive button")}
       />
     </View>

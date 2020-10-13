@@ -27,6 +27,7 @@ const StartScreen = ({ navigation }: NavigationStackProp) => {
       ></Image>
       <ActiveButton
         text="Start"
+        textLine=""
         onPress={() => navigation.navigate("ChoosePacket")}
       />
     </View>
