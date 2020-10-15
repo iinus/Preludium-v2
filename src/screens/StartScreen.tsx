@@ -22,7 +22,7 @@ const StartScreen = ({ navigation }: NavigationStackProp) => {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../../assets/Preludium-logo.png")}
+        source={require("../assets/Preludium-logo.png")}
         style={styles.img}
       ></Image>
       <ActiveButton
