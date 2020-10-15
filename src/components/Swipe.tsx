@@ -16,11 +16,6 @@ const SWIPE_LEFT_THRESHOLD = -0.4 * SCREEN_WIDTH;
 const SWIPE_OUT_DURATION = 300;
 
 const styles = StyleSheet.create({
-  background: {
-    backgroundColor: "#03444E",
-    width: "100%",
-    height: "100%",
-  },
   textWrapper: {
     flex: 1,
     display: "flex",
@@ -167,7 +162,7 @@ const Swipe = ({ data }: ISwipeProps) => {
     return cards;
   };
 
-  return <View style={styles.background}>{cardsToCardItem(data)}</View>;
+  return <View>{cardsToCardItem(data)}</View>;
 };
 
 export default Swipe;
