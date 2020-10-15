@@ -26,7 +26,7 @@ const StartScreen = ({ navigation }: NavigationStackProp) => {
         style={styles.img}
       ></Image>
       <ActiveButton
-        text="Start"
+        text="START"
         textLine=""
         onPress={() => navigation.navigate("ChoosePacket")}
       />

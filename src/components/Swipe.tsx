@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
   cardStyle: {
     position: "absolute",
     height: SCREEN_HEIGHT * 0.6,
-    width: SCREEN_WIDTH * 0.75,
-    marginLeft: SCREEN_WIDTH * 0.125,
-    marginTop: SCREEN_HEIGHT * 0.2,
+    width: SCREEN_WIDTH * 0.85,
+    marginLeft: SCREEN_WIDTH * 0.075,
+    marginTop: SCREEN_HEIGHT * 0.275,
     borderWidth: 3,
     borderColor: "black",
     borderRadius: 25,
@@ -40,9 +40,9 @@ const styles = StyleSheet.create({
   cardBehindStyle: {
     position: "absolute",
     height: SCREEN_HEIGHT * 0.6,
-    width: SCREEN_WIDTH * 0.7,
-    marginLeft: SCREEN_WIDTH * 0.15,
-    marginTop: SCREEN_HEIGHT * 0.18,
+    width: SCREEN_WIDTH * 0.75, 
+   marginLeft: SCREEN_WIDTH * 0.125,
+   marginTop: SCREEN_HEIGHT * 0.25,
     borderWidth: 3,
     borderColor: "black",
     borderRadius: 25,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontSize: 16,
     textAlign: "center",
-    marginBottom: SCREEN_HEIGHT * 0.15,
+    marginBottom: SCREEN_HEIGHT * 0.175,
     marginTop: 44,
     marginHorizontal: 10,
     ...Platform.select({
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   cardQuestion: {
     alignSelf: "center",
-    width: SCREEN_WIDTH * 0.6,
+    width: SCREEN_WIDTH * 0.75,
     textAlign: "center",
     ...Platform.select({
       ios: { fontFamily: "System" },
