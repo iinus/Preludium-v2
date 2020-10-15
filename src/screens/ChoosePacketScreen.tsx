@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet, Platform } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
 import { ActiveButton } from "../components/ActiveButton";
+import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
 
 const styles = StyleSheet.create({
   container: {
@@ -22,11 +23,18 @@ const styles = StyleSheet.create({
     }),
     fontWeight: "700",
   },
+  background: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: "100%",
+  },
 });
 
 const ChoosePacketScreen = ({ navigation }: NavigationStackProp) => {
   return (
     <View style={styles.container}>
+      <BackGroundSwirls style={styles.background} />
       <Text style={styles.text}>Velg pakke</Text>
       <ActiveButton
         text="NTNU"
