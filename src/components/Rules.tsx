@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   heading: {
     textAlign: "center",
     margin: 20,
-    fontSize: 36,
+    fontSize: 24,
     ...Platform.select({
       ios: { fontFamily: "Courier" },
       android: { fontFamily: "Space Mono" },
