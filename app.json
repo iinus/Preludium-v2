@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "src/assets/Logo-P.png",
     "splash": {
-      "image": "src/assets/Preludium-logo.png",
+      "image": "src/assets/splash.image",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
