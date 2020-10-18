@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
       android: { fontFamily: "Space Mono" },
     }),
     fontWeight: "bold",
+    color: "#EA6A3B",
   },
   titles: {
     textAlign: "center",
@@ -23,6 +24,7 @@ const styles = StyleSheet.create({
       android: { fontFamily: "Space Mono" },
     }),
     fontWeight: "bold",
+    color: "white",
   },
   text: {
     fontSize: 14,
@@ -33,6 +35,7 @@ const styles = StyleSheet.create({
       ios: { fontFamily: "System" },
       android: { fontFamily: "Roboto" },
     }),
+    color: "white",
   },
 });
 
