@@ -52,7 +52,7 @@ const PlayScreen = () => {
         </TouchableOpacity>
       </View>
       {showHelp && <Rules />}
-      <BackGroundSwirls style={styles.background} />
+      {!showHelp && <BackGroundSwirls style={styles.background} />}
       {!showHelp && <Swipe data={data}></Swipe>}
     </View>
   );
