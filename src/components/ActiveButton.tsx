@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     alignItems: "center",
     justifyContent: "center",
-    width: "80%%",
-    height: 106,
+    width: "80%",
     bottom: 20,
     marginTop: 20,
     borderColor: "black",
@@ -27,26 +26,35 @@ const styles = StyleSheet.create({
     }),
   },
 
-    textLine: {
-      color: "#828282",
-      fontSize: 14,
-      textAlign: "center",
-      marginTop: 8,
-      ...Platform.select({
-        ios: { fontFamily: "Courier" },
-        android: { fontFamily: "Space Mono" },
-      })
+  textLine: {
+    color: "#828282",
+    fontSize: 14,
+    textAlign: "center",
+    marginTop: 8,
+    ...Platform.select({
+      ios: { fontFamily: "Courier" },
+      android: { fontFamily: "Space Mono" },
+    }),
   },
 });
 
 interface IButtonProps {
   text: string;
-  textLine: string;
+  textLine?: string;
   onPress(): void;
+  height: number;
 }
 
-export const ActiveButton = ({ text, textLine, onPress }: IButtonProps) => (
-  <TouchableOpacity onPress={onPress} style={styles.button}>
+export const ActiveButton = ({
+  text,
+  textLine,
+  onPress,
+  height,
+}: IButtonProps) => (
+  <TouchableOpacity
+    onPress={onPress}
+    style={[styles.button, { height: height }]}
+  >
     <Text style={styles.text}>{text}</Text>
     <Text style={styles.textLine}>{textLine}</Text>
   </TouchableOpacity>
