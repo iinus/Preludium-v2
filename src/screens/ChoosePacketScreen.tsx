@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet, Platform } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
 import { ActiveButton } from "../components/ActiveButton";
+import { InactiveButton } from "../components/InactiveButton";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
 
 const styles = StyleSheet.create({
@@ -41,16 +42,8 @@ const ChoosePacketScreen = ({ navigation }: NavigationStackProp) => {
         textLine="Student i Trondheim"
         onPress={() => navigation.navigate("PlayScreen")}
       />
-      <ActiveButton
-        text="UiO"
-        textLine="kommer"
-        onPress={() => console.log("I should be an inactive button")}
-      />
-      <ActiveButton
-        text="BI"
-        textLine="kommer"
-        onPress={() => console.log("I should be an inactive button")}
-      />
+      <InactiveButton text="UiO" textLine="kommer" />
+      <InactiveButton text="BI" textLine="kommer" />
     </View>
   );
 };
