@@ -1,9 +1,10 @@
 {
   "expo": {
-    "name": "Preludium",
-    "slug": "Preludium",
+    "name": "Kork",
+    "slug": "Kork",
     "version": "1.0.0",
     "orientation": "portrait",
+    "privacy": "unlisted",
     "icon": "src/assets/AppIcon.png",
     "splash": {
       "image": "src/assets/splash.png",
@@ -15,7 +16,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.oybjo.kork"
     },
     "web": {
       "favicon": "src/assets/K_Icon.svg"
