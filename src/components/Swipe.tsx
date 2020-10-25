@@ -23,9 +23,9 @@ const styles = StyleSheet.create({
   },
   cardStyle: {
     position: "absolute",
-    height: SCREEN_HEIGHT * 0.6,
-    width: SCREEN_WIDTH * 0.75,
-    marginLeft: SCREEN_WIDTH * 0.125,
+    height: SCREEN_HEIGHT * 0.55,
+    width: SCREEN_WIDTH * 0.82,
+    marginLeft: SCREEN_WIDTH * 0.1,
     marginTop: SCREEN_HEIGHT * 0.1,
     borderWidth: 3,
     borderColor: "black",
@@ -34,9 +34,9 @@ const styles = StyleSheet.create({
   },
   cardBehindStyle: {
     position: "absolute",
-    height: SCREEN_HEIGHT * 0.6,
-    width: SCREEN_WIDTH * 0.7,
-    marginLeft: SCREEN_WIDTH * 0.15,
+    height: SCREEN_HEIGHT * 0.55,
+    width: SCREEN_WIDTH * 0.72,
+    marginLeft: SCREEN_WIDTH * 0.14,
     marginTop: SCREEN_HEIGHT * 0.08,
     borderWidth: 3,
     borderColor: "black",
@@ -45,16 +45,16 @@ const styles = StyleSheet.create({
   },
   cardType: {
     alignSelf: "center",
-    fontSize: 16,
+    fontSize: 18,
+    fontWeight: "bold",
     textAlign: "center",
     marginBottom: SCREEN_HEIGHT * 0.15,
     marginTop: 44,
     marginHorizontal: 10,
     ...Platform.select({
       ios: { fontFamily: "Courier" },
-      android: { fontFamily: "Space Mono" },
+      android: { fontFamily: "monospace" },
     }),
-    fontWeight: "bold",
   },
   cardQuestion: {
     alignSelf: "center",
@@ -158,7 +158,7 @@ const Swipe = ({ data }: ISwipeProps) => {
 
   const cardsToCardItem = (data: any) => {
     let cards = data.map((Object: Object) => cardItem(Object));
-    cards = Platform.OS === "android" ? cards : cards.reverse();
+    cards = cards.reverse();
     return cards;
   };
 

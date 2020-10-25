@@ -4,7 +4,7 @@
     "slug": "Preludium",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "src/assets/Logo-P.png",
+    "icon": "src/assets/AppIcon.png",
     "splash": {
       "image": "src/assets/splash.png",
       "resizeMode": "contain",
@@ -18,7 +18,7 @@
       "supportsTablet": true
     },
     "web": {
-      "favicon": "src/assets/Logo-P.png"
+      "favicon": "src/assets/K_Icon.svg"
     },
     "packagerOpts": {
       "config": "metro.config.js",

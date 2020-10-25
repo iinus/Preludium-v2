@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     ...Platform.select({
       ios: { fontFamily: "Courier" },
-      android: { fontFamily: "Space Mono" },
+      android: { fontFamily: "monospace" },
     }),
     fontWeight: "bold",
     color: "#EA6A3B",
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     ...Platform.select({
       ios: { fontFamily: "Courier" },
-      android: { fontFamily: "Space Mono" },
+      android: { fontFamily: "monospace" },
     }),
     fontWeight: "bold",
     color: "white",

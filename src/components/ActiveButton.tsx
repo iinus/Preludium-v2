@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     ...Platform.select({
       ios: { fontFamily: "Courier" },
-      android: { fontFamily: "Space Mono" },
+      android: { fontFamily: "monospace" },
     }),
   },
 
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     ...Platform.select({
       ios: { fontFamily: "Courier" },
-      android: { fontFamily: "Space Mono" },
+      android: { fontFamily: "monospace" },
     }),
   },
 });

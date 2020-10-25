@@ -1,9 +1,15 @@
 import React from "react";
-import { View, StyleSheet, Dimensions, Text, Platform } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  Text,
+  Platform,
+  TouchableOpacity,
+} from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
-import { ActiveButton } from "../components/ActiveButton";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
-import Logo from "../assets/Logo.svg";
+import Kork from "../assets/kork.svg";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -17,10 +23,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  img: {
-    height: 45,
-    width: 240,
-  },
+
   background: {
     position: "absolute",
     bottom: 0,
@@ -33,28 +36,40 @@ const styles = StyleSheet.create({
     left: SCREEN_WIDTH * 0.296,
   },
   text: {
-    color: "#EA6A3B",
-    fontSize: 14,
-    marginBottom: 80,
+    color: "black",
+    fontSize: 18,
     fontWeight: "bold",
     ...Platform.select({
       ios: { fontFamily: "Courier" },
-      android: { fontFamily: "Space Mono" },
+      android: { fontFamily: "monospace" },
     }),
+  },
+  button: {
+    position: "absolute",
+    bottom: 150,
+    backgroundColor: "#F7F4EC",
+    borderRadius: 25,
+    paddingVertical: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "80%",
+    height: 86,
+    borderColor: "black",
+    borderWidth: 3,
   },
 });
 
 const StartScreen = ({ navigation }: NavigationStackProp) => {
   return (
     <View style={styles.container}>
-      <Logo width={152} style={styles.logo} />
-      <Text style={styles.text}> Drikkelekspill, made with &lt;3 </Text>
+      <Kork width={175} style={styles.logo} />
       <BackGroundSwirls style={styles.background} />
-      <ActiveButton
-        text="START"
-        height={68}
+      <TouchableOpacity
         onPress={() => navigation.navigate("ChoosePacket")}
-      />
+        style={styles.button}
+      >
+        <Text style={styles.text}>START</Text>
+      </TouchableOpacity>
     </View>
   );
 };
