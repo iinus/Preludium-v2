@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
 import Swipe from "../components/Swipe";
 import data from "../data/data";
-import BackGroundSwirlsColored from "../assets/BackgroundSwirlsColored.svg";
+import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
 import Logo from "../assets/Logo.svg";
 import Help from "../assets/Help.svg";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -53,7 +53,7 @@ const PlayScreen = () => {
         </TouchableOpacity>
       </View>
       {showHelp && <Rules />}
-      {!showHelp && <BackGroundSwirlsColored style={styles.background} />}
+      {!showHelp && <BackGroundSwirls style={styles.background} />}
       {!showHelp && <Swipe data={data}></Swipe>}
     </View>
   );
