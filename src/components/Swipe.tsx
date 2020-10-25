@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     ...Platform.select({
       ios: { fontFamily: "Courier" },
-      android: { fontFamily: "Space Mono" },
+      android: { fontFamily: "monospace" },
     }),
     fontWeight: "bold",
   },
@@ -158,7 +158,7 @@ const Swipe = ({ data }: ISwipeProps) => {
 
   const cardsToCardItem = (data: any) => {
     let cards = data.map((Object: Object) => cardItem(Object));
-    cards = Platform.OS === "android" ? cards : cards.reverse();
+    cards = cards.reverse();
     return cards;
   };
 

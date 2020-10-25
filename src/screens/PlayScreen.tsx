@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
 import Swipe from "../components/Swipe";
 import data from "../data/data";
-import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
+import BackGroundSwirlsColored from "../assets/BackgroundSwirlsColored.svg";
 import Logo from "../assets/Logo.svg";
 import Help from "../assets/Help.svg";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     left: 0,
+    right: 0,
     width: "100%",
   },
   playscreen: {
@@ -52,7 +53,7 @@ const PlayScreen = () => {
         </TouchableOpacity>
       </View>
       {showHelp && <Rules />}
-      {!showHelp && <BackGroundSwirls style={styles.background} />}
+      {!showHelp && <BackGroundSwirlsColored style={styles.background} />}
       {!showHelp && <Swipe data={data}></Swipe>}
     </View>
   );

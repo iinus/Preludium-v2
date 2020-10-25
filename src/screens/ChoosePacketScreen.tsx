@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     ...Platform.select({
       ios: { fontFamily: "Courier" },
-      android: { fontFamily: "Space Mono" },
+      android: { fontFamily: "monospace" },
     }),
     fontWeight: "700",
   },

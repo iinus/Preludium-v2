@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     ...Platform.select({
       ios: { fontFamily: "Courier" },
-      android: { fontFamily: "Space Mono" },
+      android: { fontFamily: "monospace" },
     }),
   },
 });
