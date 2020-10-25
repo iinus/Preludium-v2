@@ -8,9 +8,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
-import { ActiveButton } from "../components/ActiveButton";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
-import Logo from "../assets/Logo.svg";
+import Kork from "../assets/kork.svg";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -46,6 +45,8 @@ const styles = StyleSheet.create({
     }),
   },
   button: {
+    position: "absolute",
+    bottom: 150,
     backgroundColor: "#F7F4EC",
     borderRadius: 25,
     paddingVertical: 15,
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
 const StartScreen = ({ navigation }: NavigationStackProp) => {
   return (
     <View style={styles.container}>
-      <Logo width={152} style={styles.logo} />
+      <Kork width={175} style={styles.logo} />
       <BackGroundSwirls style={styles.background} />
       <TouchableOpacity
         onPress={() => navigation.navigate("ChoosePacket")}
