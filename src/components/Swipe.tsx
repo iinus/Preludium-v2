@@ -8,11 +8,15 @@ import {
   Dimensions,
   Platform,
 } from "react-native";
+import { shuffleCards } from "../utils/shuffleCards";
+import { ICard } from "../types/Card";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
-const SWIPE_RIGHT_THRESHOLD = 0.4 * SCREEN_WIDTH;
-const SWIPE_LEFT_THRESHOLD = -0.4 * SCREEN_WIDTH;
+const SWIPE_RIGHT_THRESHOLD = 0.3 * SCREEN_WIDTH;
+const SWIPE_LEFT_THRESHOLD = -0.3 * SCREEN_WIDTH;
+const SWIPE_UP_THRESHOLD = 0.01 * SCREEN_HEIGHT;
+const SWIPE_DOWN_THRESHOLD = -0.01 * SCREEN_HEIGHT;
 const SWIPE_OUT_DURATION = 300;
 
 const styles = StyleSheet.create({
@@ -37,7 +41,18 @@ const styles = StyleSheet.create({
     height: SCREEN_HEIGHT * 0.55,
     width: SCREEN_WIDTH * 0.72,
     marginLeft: SCREEN_WIDTH * 0.14,
-    marginTop: SCREEN_HEIGHT * 0.08,
+    marginTop: SCREEN_HEIGHT * 0.085,
+    borderWidth: 3,
+    borderColor: "black",
+    borderRadius: 25,
+    backgroundColor: "#F7F4EC",
+  },
+  cardBehindBehindStyle: {
+    position: "absolute",
+    height: SCREEN_HEIGHT * 0.55,
+    width: SCREEN_WIDTH * 0.62,
+    marginLeft: SCREEN_WIDTH * 0.19,
+    marginTop: SCREEN_HEIGHT * 0.07,
     borderWidth: 3,
     borderColor: "black",
     borderRadius: 25,
@@ -70,12 +85,14 @@ const styles = StyleSheet.create({
 });
 
 interface ISwipeProps {
-  data: any;
+  data: ICard[];
 }
 
 const Swipe = ({ data }: ISwipeProps) => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const position = useRef(new Animated.ValueXY()).current;
+  const cards = shuffleCards(data);
+
   const _panResponder = PanResponder.create({
     // Ask to be the responder:
     onStartShouldSetPanResponder: () => true,
@@ -92,9 +109,15 @@ const Swipe = ({ data }: ISwipeProps) => {
     onPanResponderRelease: (e, gesture) => {
       // The user has released all touches while this view is the
       // responder. This typically means a gesture has succeeded
-      if (Math.abs(gesture.dx) > SWIPE_RIGHT_THRESHOLD) {
+      if (
+        Math.abs(gesture.dx) > SWIPE_RIGHT_THRESHOLD ||
+        Math.abs(gesture.dx) > SWIPE_UP_THRESHOLD
+      ) {
         forceSwipe("right");
-      } else if (Math.abs(gesture.dy) < SWIPE_LEFT_THRESHOLD) {
+      } else if (
+        Math.abs(gesture.dy) < SWIPE_LEFT_THRESHOLD ||
+        Math.abs(gesture.dy) < SWIPE_DOWN_THRESHOLD
+      ) {
         forceSwipe("left");
       } else {
         Animated.spring(position, {
@@ -131,38 +154,39 @@ const Swipe = ({ data }: ISwipeProps) => {
     position.setValue({ x: 0, y: 0 });
   };
 
-  const cardItem = (card: any) => {
-    if (card.index < currentIndex) {
-      return null;
-    }
-    return card.index === currentIndex ? (
-      <Animated.View
-        key={card.index}
-        {..._panResponder.panHandlers}
-        style={[getCardStyle(position), styles.cardStyle]}
-      >
-        <View style={styles.textWrapper}>
-          <Text style={styles.cardType}>{card.type}</Text>
-          <Text style={styles.cardQuestion}>{card.question}</Text>
+  const cardItems = cards
+    .map((card) => {
+      const index = cards.indexOf(card);
+      if (index < currentIndex) {
+        return;
+      }
+      return index === currentIndex ? (
+        <View key={index}>
+          <Animated.View
+            {..._panResponder.panHandlers}
+            style={[getCardStyle(position), styles.cardStyle]}
+          >
+            <View style={styles.textWrapper}>
+              <Text style={styles.cardType}>{card.type.toUpperCase()}</Text>
+              <Text style={styles.cardQuestion}>{card.question}</Text>
+            </View>
+          </Animated.View>
         </View>
-      </Animated.View>
-    ) : (
-      <Animated.View key={card.index} style={styles.cardBehindStyle}>
-        <View style={styles.textWrapper}>
-          <Text style={styles.cardType}>{card.type}</Text>
-          <Text style={styles.cardQuestion}>{card.question}</Text>
+      ) : (
+        <View key={index}>
+          <View style={styles.cardBehindBehindStyle}></View>
+          <View style={styles.cardBehindStyle}>
+            <View style={styles.textWrapper}>
+              <Text style={styles.cardType}>{card.type.toUpperCase()}</Text>
+              <Text style={styles.cardQuestion}>{card.question}</Text>
+            </View>
+          </View>
         </View>
-      </Animated.View>
-    );
-  };
+      );
+    })
+    .reverse();
 
-  const cardsToCardItem = (data: any) => {
-    let cards = data.map((Object: Object) => cardItem(Object));
-    cards = cards.reverse();
-    return cards;
-  };
-
-  return <View>{cardsToCardItem(data)}</View>;
+  return cardItems;
 };
 
 export default Swipe;
