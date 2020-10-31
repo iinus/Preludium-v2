@@ -15,6 +15,8 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SWIPE_RIGHT_THRESHOLD = 0.3 * SCREEN_WIDTH;
 const SWIPE_LEFT_THRESHOLD = -0.3 * SCREEN_WIDTH;
+const SWIPE_UP_THRESHOLD = 0.02 * SCREEN_HEIGHT;
+const SWIPE_DOWN_THRESHOLD = -0.02 * SCREEN_HEIGHT;
 const SWIPE_OUT_DURATION = 250;
 
 const styles = StyleSheet.create({
@@ -96,9 +98,15 @@ const Swipe = ({ data }: ISwipeProps) => {
     onPanResponderRelease: (e, gesture) => {
       // The user has released all touches while this view is the
       // responder. This typically means a gesture has succeeded
-      if (Math.abs(gesture.dx) > SWIPE_RIGHT_THRESHOLD) {
+      if (
+        Math.abs(gesture.dx) > SWIPE_RIGHT_THRESHOLD ||
+        Math.abs(gesture.dx) > SWIPE_UP_THRESHOLD
+      ) {
         forceSwipe("right");
-      } else if (Math.abs(gesture.dy) < SWIPE_LEFT_THRESHOLD) {
+      } else if (
+        Math.abs(gesture.dy) < SWIPE_LEFT_THRESHOLD ||
+        Math.abs(gesture.dy) < SWIPE_DOWN_THRESHOLD
+      ) {
         forceSwipe("left");
       } else {
         Animated.spring(position, {
@@ -139,12 +147,11 @@ const Swipe = ({ data }: ISwipeProps) => {
     .map((card) => {
       const index = data.indexOf(card);
       if (index < currentIndex) {
-        return null;
+        return;
       }
       return index === currentIndex ? (
-        <View>
+        <View key={index}>
           <Animated.View
-            key={index}
             {..._panResponder.panHandlers}
             style={[getCardStyle(position), styles.cardStyle]}
           >
@@ -155,8 +162,8 @@ const Swipe = ({ data }: ISwipeProps) => {
           </Animated.View>
         </View>
       ) : (
-        <View>
-          <Animated.View key={index} style={styles.cardBehindStyle}>
+        <View key={index}>
+          <Animated.View style={styles.cardBehindStyle}>
             <View style={styles.textWrapper}>
               <Text style={styles.cardType}>{card.type}</Text>
               <Text style={styles.cardQuestion}>{card.question}</Text>
