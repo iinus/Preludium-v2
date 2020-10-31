@@ -156,7 +156,7 @@ const Swipe = ({ data }: ISwipeProps) => {
 
   const cardItems = cards
     .map((card) => {
-      const index = data.indexOf(card);
+      const index = cards.indexOf(card);
       if (index < currentIndex) {
         return;
       }
@@ -167,7 +167,7 @@ const Swipe = ({ data }: ISwipeProps) => {
             style={[getCardStyle(position), styles.cardStyle]}
           >
             <View style={styles.textWrapper}>
-              <Text style={styles.cardType}>{card.type}</Text>
+              <Text style={styles.cardType}>{card.type.toUpperCase()}</Text>
               <Text style={styles.cardQuestion}>{card.question}</Text>
             </View>
           </Animated.View>
@@ -177,7 +177,7 @@ const Swipe = ({ data }: ISwipeProps) => {
           <View style={styles.cardBehindBehindStyle}></View>
           <View style={styles.cardBehindStyle}>
             <View style={styles.textWrapper}>
-              <Text style={styles.cardType}>{card.type}</Text>
+              <Text style={styles.cardType}>{card.type.toUpperCase()}</Text>
               <Text style={styles.cardQuestion}>{card.question}</Text>
             </View>
           </View>
