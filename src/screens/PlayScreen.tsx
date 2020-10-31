@@ -3,7 +3,7 @@ import { View, StyleSheet, Dimensions } from "react-native";
 import Swipe from "../components/Swipe";
 import data from "../data/data";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
-import Logo from "../assets/kork.svg";
+import Logo from "../assets/korkSmall.svg";
 import Help from "../assets/Help.svg";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Rules from "../components/Rules";
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     marginLeft: SCREEN_WIDTH * 0.21,
     marginTop: SCREEN_HEIGHT * 0.08,
+    marginBottom: SCREEN_HEIGHT *0.04
   },
 });
 
@@ -47,7 +48,7 @@ const PlayScreen = () => {
   return (
     <View style={styles.playscreen}>
       <View style={styles.topWrapper}>
-        <Logo width={152} />
+        <Logo width={168} />
         <TouchableOpacity onPress={() => onPressHelpButton()}>
           <Help width={24} height={24} style={styles.help} />
         </TouchableOpacity>
