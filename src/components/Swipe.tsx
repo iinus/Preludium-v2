@@ -13,9 +13,9 @@ import { ICard } from "../types/Card";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
-const SWIPE_RIGHT_THRESHOLD = 0.4 * SCREEN_WIDTH;
-const SWIPE_LEFT_THRESHOLD = -0.4 * SCREEN_WIDTH;
-const SWIPE_OUT_DURATION = 300;
+const SWIPE_RIGHT_THRESHOLD = 0.3 * SCREEN_WIDTH;
+const SWIPE_LEFT_THRESHOLD = -0.3 * SCREEN_WIDTH;
+const SWIPE_OUT_DURATION = 250;
 
 const styles = StyleSheet.create({
   textWrapper: {
