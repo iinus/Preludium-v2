@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
-import Kork from "../assets/kork.svg";
+import Kork from "../assets/korkBig.svg";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
