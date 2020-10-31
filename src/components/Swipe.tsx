@@ -8,6 +8,8 @@ import {
   Dimensions,
   Platform,
 } from "react-native";
+import { shuffleCards } from "../utils/shuffleCards";
+import { ICard } from "../types/Card";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -70,12 +72,13 @@ const styles = StyleSheet.create({
 });
 
 interface ISwipeProps {
-  data: any;
+  data: ICard[];
 }
 
 const Swipe = ({ data }: ISwipeProps) => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const position = useRef(new Animated.ValueXY()).current;
+  const cards = shuffleCards(data);
   const _panResponder = PanResponder.create({
     // Ask to be the responder:
     onStartShouldSetPanResponder: () => true,
@@ -131,38 +134,37 @@ const Swipe = ({ data }: ISwipeProps) => {
     position.setValue({ x: 0, y: 0 });
   };
 
-  const cardItem = (card: any) => {
-    if (card.index < currentIndex) {
-      return null;
-    }
-    return card.index === currentIndex ? (
-      <Animated.View
-        key={card.index}
-        {..._panResponder.panHandlers}
-        style={[getCardStyle(position), styles.cardStyle]}
-      >
-        <View style={styles.textWrapper}>
-          <Text style={styles.cardType}>{card.type}</Text>
-          <Text style={styles.cardQuestion}>{card.question}</Text>
+  return data
+    .map((card) => {
+      const index = data.indexOf(card);
+      if (index < currentIndex) {
+        return null;
+      }
+      return index === currentIndex ? (
+        <View>
+          <Animated.View
+            key={index}
+            {..._panResponder.panHandlers}
+            style={[getCardStyle(position), styles.cardStyle]}
+          >
+            <View style={styles.textWrapper}>
+              <Text style={styles.cardType}>{card.type}</Text>
+              <Text style={styles.cardQuestion}>{card.question}</Text>
+            </View>
+          </Animated.View>
         </View>
-      </Animated.View>
-    ) : (
-      <Animated.View key={card.index} style={styles.cardBehindStyle}>
-        <View style={styles.textWrapper}>
-          <Text style={styles.cardType}>{card.type}</Text>
-          <Text style={styles.cardQuestion}>{card.question}</Text>
+      ) : (
+        <View>
+          <Animated.View key={index} style={styles.cardBehindStyle}>
+            <View style={styles.textWrapper}>
+              <Text style={styles.cardType}>{card.type}</Text>
+              <Text style={styles.cardQuestion}>{card.question}</Text>
+            </View>
+          </Animated.View>
         </View>
-      </Animated.View>
-    );
-  };
-
-  const cardsToCardItem = (data: any) => {
-    let cards = data.map((Object: Object) => cardItem(Object));
-    cards = cards.reverse();
-    return cards;
-  };
-
-  return <View>{cardsToCardItem(data)}</View>;
+      );
+    })
+    .reverse();
 };
 
 export default Swipe;
