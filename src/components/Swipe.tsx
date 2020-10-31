@@ -15,9 +15,9 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SWIPE_RIGHT_THRESHOLD = 0.3 * SCREEN_WIDTH;
 const SWIPE_LEFT_THRESHOLD = -0.3 * SCREEN_WIDTH;
-const SWIPE_UP_THRESHOLD = 0.02 * SCREEN_HEIGHT;
-const SWIPE_DOWN_THRESHOLD = -0.02 * SCREEN_HEIGHT;
-const SWIPE_OUT_DURATION = 250;
+const SWIPE_UP_THRESHOLD = 0.01 * SCREEN_HEIGHT;
+const SWIPE_DOWN_THRESHOLD = -0.01 * SCREEN_HEIGHT;
+const SWIPE_OUT_DURATION = 300;
 
 const styles = StyleSheet.create({
   textWrapper: {
@@ -41,7 +41,18 @@ const styles = StyleSheet.create({
     height: SCREEN_HEIGHT * 0.55,
     width: SCREEN_WIDTH * 0.72,
     marginLeft: SCREEN_WIDTH * 0.14,
-    marginTop: SCREEN_HEIGHT * 0.08,
+    marginTop: SCREEN_HEIGHT * 0.085,
+    borderWidth: 3,
+    borderColor: "black",
+    borderRadius: 25,
+    backgroundColor: "#F7F4EC",
+  },
+  cardBehindBehindStyle: {
+    position: "absolute",
+    height: SCREEN_HEIGHT * 0.55,
+    width: SCREEN_WIDTH * 0.62,
+    marginLeft: SCREEN_WIDTH * 0.19,
+    marginTop: SCREEN_HEIGHT * 0.07,
     borderWidth: 3,
     borderColor: "black",
     borderRadius: 25,
@@ -143,7 +154,7 @@ const Swipe = ({ data }: ISwipeProps) => {
     position.setValue({ x: 0, y: 0 });
   };
 
-  return cards
+  const cardItems = cards
     .map((card) => {
       const index = data.indexOf(card);
       if (index < currentIndex) {
@@ -163,16 +174,19 @@ const Swipe = ({ data }: ISwipeProps) => {
         </View>
       ) : (
         <View key={index}>
-          <Animated.View style={styles.cardBehindStyle}>
+          <View style={styles.cardBehindBehindStyle}></View>
+          <View style={styles.cardBehindStyle}>
             <View style={styles.textWrapper}>
               <Text style={styles.cardType}>{card.type}</Text>
               <Text style={styles.cardQuestion}>{card.question}</Text>
             </View>
-          </Animated.View>
+          </View>
         </View>
       );
     })
     .reverse();
+
+  return cardItems;
 };
 
 export default Swipe;
