@@ -79,6 +79,7 @@ const Swipe = ({ data }: ISwipeProps) => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const position = useRef(new Animated.ValueXY()).current;
   const cards = shuffleCards(data);
+
   const _panResponder = PanResponder.create({
     // Ask to be the responder:
     onStartShouldSetPanResponder: () => true,
@@ -134,7 +135,7 @@ const Swipe = ({ data }: ISwipeProps) => {
     position.setValue({ x: 0, y: 0 });
   };
 
-  return data
+  return cards
     .map((card) => {
       const index = data.indexOf(card);
       if (index < currentIndex) {
