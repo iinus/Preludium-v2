@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { shuffleCards } from "../utils/shuffleCards";
 import { ICard } from "../types/Card";
+import SwipeExplaination from "./SwipeExplaination";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -84,12 +85,12 @@ const styles = StyleSheet.create({
   },
 });
 
-interface ISwipeProps {
+interface ICardsProps {
   data: ICard[];
 }
 
-const Swipe = ({ data }: ISwipeProps) => {
-  const [currentIndex, setCurrentIndex] = useState(1);
+const Cards = ({ data }: ICardsProps) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const position = useRef(new Animated.ValueXY()).current;
   const cards = shuffleCards(data);
 
@@ -154,39 +155,42 @@ const Swipe = ({ data }: ISwipeProps) => {
     position.setValue({ x: 0, y: 0 });
   };
 
-  const cardItems = cards
-    .map((card) => {
-      const index = cards.indexOf(card);
-      if (index < currentIndex) {
-        return;
-      }
-      return index === currentIndex ? (
-        <View key={index}>
-          <Animated.View
-            {..._panResponder.panHandlers}
-            style={[getCardStyle(position), styles.cardStyle]}
-          >
-            <View style={styles.textWrapper}>
-              <Text style={styles.cardType}>{card.type.toUpperCase()}</Text>
-              <Text style={styles.cardQuestion}>{card.question}</Text>
+  return (
+    <>
+      {cards
+        .map((card) => {
+          const index = cards.indexOf(card);
+          if (index < currentIndex) {
+            return <View></View>;
+          }
+          return index === currentIndex ? (
+            <View key={index}>
+              <Animated.View
+                {..._panResponder.panHandlers}
+                style={[getCardStyle(position), styles.cardStyle]}
+              >
+                <View style={styles.textWrapper}>
+                  <Text style={styles.cardType}>{card.type.toUpperCase()}</Text>
+                  <Text style={styles.cardQuestion}>{card.question}</Text>
+                  {index === 0 && <SwipeExplaination />}
+                </View>
+              </Animated.View>
             </View>
-          </Animated.View>
-        </View>
-      ) : (
-        <View key={index}>
-          <View style={styles.cardBehindBehindStyle}></View>
-          <View style={styles.cardBehindStyle}>
-            <View style={styles.textWrapper}>
-              <Text style={styles.cardType}>{card.type.toUpperCase()}</Text>
-              <Text style={styles.cardQuestion}>{card.question}</Text>
+          ) : (
+            <View key={index}>
+              <View style={styles.cardBehindBehindStyle}></View>
+              <View style={styles.cardBehindStyle}>
+                <View style={styles.textWrapper}>
+                  <Text style={styles.cardType}>{card.type.toUpperCase()}</Text>
+                  <Text style={styles.cardQuestion}>{card.question}</Text>
+                </View>
+              </View>
             </View>
-          </View>
-        </View>
-      );
-    })
-    .reverse();
-
-  return cardItems;
+          );
+        })
+        .reverse()}
+    </>
+  );
 };
 
-export default Swipe;
+export default Cards;

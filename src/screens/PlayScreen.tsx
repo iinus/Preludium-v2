@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
-import Swipe from "../components/Swipe";
+import Cards from "../components/Cards";
 import data from "../data/data";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
 import Logo from "../assets/korkSmall.svg";
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     marginLeft: SCREEN_WIDTH * 0.21,
     marginTop: SCREEN_HEIGHT * 0.08,
-    marginBottom: SCREEN_HEIGHT *0.04
+    marginBottom: SCREEN_HEIGHT * 0.04,
   },
 });
 
@@ -53,9 +53,8 @@ const PlayScreen = () => {
           <Help width={24} height={24} style={styles.help} />
         </TouchableOpacity>
       </View>
-      {showHelp && <Rules />}
       {!showHelp && <BackGroundSwirls style={styles.background} />}
-      {!showHelp && <Swipe data={data}></Swipe>}
+      {showHelp ? <Rules /> : <Cards data={data} />}
     </View>
   );
 };
