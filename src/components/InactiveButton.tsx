@@ -3,16 +3,20 @@ import { View, Text, StyleSheet, Platform, Animated } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
-  button: {
+  buttonAnimation: {
     backgroundColor: "#BDBDBD",
     borderRadius: 25,
     marginVertical: 15,
-    alignItems: "center",
-    justifyContent: "center",
     width: "80%",
     height: 106,
     bottom: 20,
     marginTop: 20,
+  },
+  buttonContent: {
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
     color: "black",
@@ -68,10 +72,13 @@ export const InactiveButton = ({ text, textLine }: IButtonProps) => {
 
   return (
     <Animated.View
-      style={[styles.button, { transform: [{ translateX: shakeAnimation }] }]}
+      style={[
+        styles.buttonAnimation,
+        { transform: [{ translateX: shakeAnimation }] },
+      ]}
     >
       <TouchableOpacity
-        style={{ width: "100%", height: "100%" }}
+        style={styles.buttonContent}
         onPress={() => {
           startShake();
         }}
