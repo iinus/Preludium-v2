@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
 import Cards from "../components/Cards";
-import data from "../data/data";
+import general from "../data/general";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
 import Logo from "../assets/korkSmall.svg";
 import Help from "../assets/Help.svg";
@@ -54,7 +54,7 @@ const PlayScreen = () => {
         </TouchableOpacity>
       </View>
       {!showHelp && <BackGroundSwirls style={styles.background} />}
-      {showHelp ? <Rules /> : <Cards data={data} />}
+      {showHelp ? <Rules /> : <Cards data={general} />}
     </View>
   );
 };
