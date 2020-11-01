@@ -6,6 +6,8 @@ import {
   Text,
   Platform,
   TouchableOpacity,
+  Animated,
+  Easing,
 } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
@@ -60,13 +62,34 @@ const styles = StyleSheet.create({
 });
 
 const StartScreen = ({ navigation }: NavigationStackProp) => {
+  const animatedValue = new Animated.Value(0);
+
+  const spin = animatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: ["180deg", "360deg"],
+  });
+
+  const spinAnimation = () => {
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 500,
+      easing: Easing.linear,
+      delay: 500,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  spinAnimation();
+
   return (
     <View style={styles.container}>
-      <Kork width={175} style={styles.logo} />
+      <Animated.View style={[styles.logo, { transform: [{ rotate: spin }] }]}>
+        <Kork width={175} />
+      </Animated.View>
       <BackGroundSwirls style={styles.background} />
       <TouchableOpacity
-        onPress={() => navigation.navigate("ChoosePacket")}
         style={styles.button}
+        onPress={() => navigation.navigate("ChoosePacket")}
       >
         <Text style={styles.text}>START</Text>
       </TouchableOpacity>
