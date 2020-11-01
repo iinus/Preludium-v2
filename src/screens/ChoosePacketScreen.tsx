@@ -4,15 +4,26 @@ import { NavigationStackProp } from "react-navigation-stack";
 import { ActiveButton } from "../components/ActiveButton";
 import { InactiveButton } from "../components/InactiveButton";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
+import TopBar from "../components/TopBar";
+
+//
+import BackIcon from "../assets/backIcon.svg";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
+
   container: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#03444E",
+  },
+
+  buttonWrapper: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#03444E",
-    width: "100%",
-    height: "100%",
+
+
   },
   text: {
     color: "white",
@@ -30,12 +41,21 @@ const styles = StyleSheet.create({
     left: 0,
     width: "100%",
   },
+
 });
+
+
 
 const ChoosePacketScreen = ({ navigation }: NavigationStackProp) => {
   return (
-    <View style={styles.container}>
-      <BackGroundSwirls style={styles.background} />
+<View style={styles.container}> 
+
+  <TopBar/>
+
+    <View style={styles.buttonWrapper}>
+    
+    <BackGroundSwirls style={styles.background} />
+
       <Text style={styles.text}>Velg pakke</Text>
       <ActiveButton
         text="NTNU"
@@ -46,6 +66,8 @@ const ChoosePacketScreen = ({ navigation }: NavigationStackProp) => {
       <InactiveButton text="UiO" textLine="kommer" />
       <InactiveButton text="BI" textLine="kommer" />
     </View>
+
+</View>
   );
 };
 
