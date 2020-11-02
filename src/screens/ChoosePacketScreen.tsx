@@ -41,7 +41,13 @@ const ChoosePacketScreen = ({ navigation }: NavigationStackProp) => {
         text="NTNU"
         textLine="Student i Trondheim"
         height={106}
-        onPress={() => navigation.navigate("PlayScreen")}
+        onPress={() => navigation.navigate("PlayScreen", { packet: "NTNU" })}
+      />
+      <ActiveButton
+        text="Generell"
+        textLine="For alle"
+        height={106}
+        onPress={() => navigation.navigate("PlayScreen", { packet: "General" })}
       />
       <InactiveButton text="UiO" textLine="kommer" />
       <InactiveButton text="BI" textLine="kommer" />
