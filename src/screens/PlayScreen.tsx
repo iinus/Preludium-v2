@@ -7,6 +7,7 @@ import Logo from "../assets/korkSmall.svg";
 import Help from "../assets/Help.svg";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Rules from "../components/Rules";
+import ntnu from "../data/ntnu";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -38,12 +39,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const PlayScreen = () => {
+const PlayScreen = (packet: string) => {
   const [showHelp, setShowHelp] = useState(false);
+  let cards = general;
 
   const onPressHelpButton = () => {
     setShowHelp(!showHelp);
   };
+
+  if (packet === "NTNU") {
+    cards = cards.concat(ntnu);
+  }
 
   return (
     <View style={styles.playscreen}>
