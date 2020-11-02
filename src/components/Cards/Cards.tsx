@@ -8,9 +8,10 @@ import {
   Dimensions,
   Platform,
 } from "react-native";
-import { shuffleCards } from "../utils/shuffleCards";
-import { ICard } from "../types/Card";
-import SwipeExplaination from "./SwipeExplaination";
+import { shuffleCards } from "../../utils/shuffleCards";
+import { ICard } from "../../types/Card";
+import SwipeExplaination from "../SwipeExplaination";
+import SpecialCard from "./SpecialCard";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -138,7 +139,6 @@ const Cards = ({ data }: ICardsProps) => {
 
   const forceSwipe = (direction: string) => {
     const x = direction === "right" ? SCREEN_WIDTH * 1.1 : -SCREEN_WIDTH;
-    console.log(direction);
     Animated.timing(position, {
       toValue: { x: x, y: 0 },
       duration: SWIPE_OUT_DURATION,
@@ -165,11 +165,17 @@ const Cards = ({ data }: ICardsProps) => {
                 {..._panResponder.panHandlers}
                 style={[getCardStyle(position), styles.cardStyle]}
               >
-                <View style={styles.textWrapper}>
-                  <Text style={styles.cardType}>{card.type.toUpperCase()}</Text>
-                  <Text style={styles.cardQuestion}>{card.question}</Text>
-                  {index === 0 && <SwipeExplaination />}
-                </View>
+                {card.type === "Special card" ? (
+                  <SpecialCard />
+                ) : (
+                  <View style={styles.textWrapper}>
+                    <Text style={styles.cardType}>
+                      {card.type.toUpperCase()}
+                    </Text>
+                    <Text style={styles.cardQuestion}>{card.question}</Text>
+                    {index === 0 && <SwipeExplaination />}
+                  </View>
+                )}
               </Animated.View>
             </View>
           ) : (

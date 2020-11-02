@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
-import Cards from "../components/Cards";
+import Cards from "../components/Cards/Cards";
 import general from "../data/general";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
 import Logo from "../assets/korkSmall.svg";
@@ -8,6 +8,7 @@ import Help from "../assets/Help.svg";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Rules from "../components/Rules";
 import ntnu from "../data/ntnu";
+import specialCards from "../data/specialCards";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
 const PlayScreen = (packet: string) => {
   const [showHelp, setShowHelp] = useState(false);
   let cards = general;
+  cards = cards.concat(specialCards);
 
   const onPressHelpButton = () => {
     setShowHelp(!showHelp);
