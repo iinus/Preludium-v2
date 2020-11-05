@@ -15,33 +15,33 @@ const styles = StyleSheet.create({
     topWrapper: {
         display: "flex",
         flexDirection: "row",
-        alignContent: "center",
-        justifyContent: "space-around",
+        flexWrap: "wrap",
+        alignItems: "center",
+        justifyContent: "space-between",
         marginLeft: SCREEN_WIDTH * 0,
         marginTop: SCREEN_HEIGHT * 0.08,
-        marginBottom: SCREEN_HEIGHT *0.04
+        marginBottom: SCREEN_HEIGHT *0.04,        
       },
 
       back: {
-        marginTop: 40,
+        marginLeft: SCREEN_WIDTH * 0.05
       },
 
       logo: {
-          margin: 10,
-
       },
       help: {
-        marginTop: 40,
+        marginRight: SCREEN_WIDTH * 0.05,
       }
 
 });
 
-
-const TopBar = ({navigation, isShopHelpIncluded} : NavigationStackProp ) => {
-    const [showHelp, setShowHelp] = useState(false);
-
+const TopBar = ({navigation} : NavigationStackProp ) => {
+    
+  const [showHelp, setShowHelp] = useState(false);
+  
 
     const onPressBackIcon = () => {
+      navigation.goBack();
   
     }
 
@@ -52,26 +52,20 @@ const TopBar = ({navigation, isShopHelpIncluded} : NavigationStackProp ) => {
 
 
     return (
+
+      <View>
         <View style={styles.topWrapper}>
             <TouchableOpacity onPress={() => onPressBackIcon()}>
                 <BackIcon width={24} height={24} style={styles.back} />
             </TouchableOpacity>
-            
             <Logo width={168} style={styles.logo}/>
+          <TouchableOpacity onPress={() => onPressHelpButton()}>
+          <Help width={24} height={24} style={[styles.help, ] } />
+          </TouchableOpacity>
 
-            {isShopHelpIncluded && (
-
-            <TouchableOpacity onPress={() => onPressHelpButton()}>
-                <Help width={24} height={24} style={styles.help} />
-            </TouchableOpacity>
-
-            )}
-
-            {showHelp && isShopHelpIncluded && <Rules/>}
-
-            
-        
         </View>
+      {showHelp && <Rules />}
+     </View>
 
     )
 };
