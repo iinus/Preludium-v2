@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import React from "react";
+import { View, StyleSheet } from "react-native";
 import Cards from "../components/Cards";
 import general from "../data/general";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
