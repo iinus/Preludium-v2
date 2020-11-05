@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import Cards from "../components/Cards";
+import Cards from "../components/Cards/Cards";
 import general from "../data/general";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
 import TopBar from "../components/TopBar";
@@ -30,7 +30,8 @@ interface IPlayScreenProps {
 
 const PlayScreen = ({ navigation, packet }: IPlayScreenProps) => {
   let cards = general;
-  cards = cards.concat(specialCards);
+  const specialcards = specialCards;
+  cards = specialcards.concat(cards);
 
   if (packet === "NTNU") {
     cards = cards.concat(ntnu);
