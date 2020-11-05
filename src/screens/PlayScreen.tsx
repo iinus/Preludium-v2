@@ -3,10 +3,9 @@ import { View, StyleSheet, Dimensions } from "react-native";
 import Swipe from "../components/Swipe";
 import data from "../data/data";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
-import Logo from "../assets/korkSmall.svg";
-import Help from "../assets/Help.svg";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import Rules from "../components/Rules";
+import TopBar from "../components/TopBar";
+import { NavigationStackProp } from "react-navigation-stack";
+
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -25,20 +24,15 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   help: {
-    marginTop: 40,
+  zIndex: 10,
   },
   topWrapper: {
     display: "flex",
     flexDirection: "row",
-    alignContent: "center",
-    justifyContent: "space-around",
-    marginLeft: SCREEN_WIDTH * 0.21,
-    marginTop: SCREEN_HEIGHT * 0.08,
-    marginBottom: SCREEN_HEIGHT *0.04
-  },
+   },
 });
 
-const PlayScreen = () => {
+const PlayScreen = ({ navigation }: NavigationStackProp) => {
   const [showHelp, setShowHelp] = useState(false);
 
   const onPressHelpButton = () => {
@@ -47,13 +41,13 @@ const PlayScreen = () => {
 
   return (
     <View style={styles.playscreen}>
+
+      <TopBar navigation={navigation}/>
+
       <View style={styles.topWrapper}>
-        <Logo width={168} />
-        <TouchableOpacity onPress={() => onPressHelpButton()}>
-          <Help width={24} height={24} style={styles.help} />
-        </TouchableOpacity>
+     
       </View>
-      {showHelp && <Rules />}
+      
       {!showHelp && <BackGroundSwirls style={styles.background} />}
       {!showHelp && <Swipe data={data}></Swipe>}
     </View>
