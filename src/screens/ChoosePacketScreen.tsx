@@ -6,17 +6,13 @@ import { InactiveButton } from "../components/InactiveButton";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
 import TopBar from "../components/TopBar";
 
-//
-import BackIcon from "../assets/backIcon.svg";
-import { TouchableOpacity } from "react-native-gesture-handler";
-
 const styles = StyleSheet.create({
 
-  container: {
+ container: {
     width: "100%",
     height: "100%",
     backgroundColor: "#03444E",
-  },
+  }, 
 
   buttonWrapper: {
     flex: 1,
@@ -50,7 +46,7 @@ const ChoosePacketScreen = ({ navigation }: NavigationStackProp) => {
   return (
 <View style={styles.container}> 
 
-  <TopBar/>
+  <TopBar navigation={navigation}/>
 
     <View style={styles.buttonWrapper}>
     
