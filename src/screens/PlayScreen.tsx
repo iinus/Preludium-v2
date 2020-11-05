@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
-import Swipe from "../components/Swipe";
-import data from "../data/data";
+import Cards from "../components/Cards";
+import general from "../data/general";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
 import TopBar from "../components/TopBar";
 import { NavigationStackProp } from "react-navigation-stack";
-
-
-const SCREEN_HEIGHT = Dimensions.get("window").height;
-const SCREEN_WIDTH = Dimensions.get("window").width;
+import ntnu from "../data/ntnu";
 
 const styles = StyleSheet.create({
   background: {
@@ -23,33 +20,25 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  help: {
-  zIndex: 10,
-  },
-  topWrapper: {
-    display: "flex",
-    flexDirection: "row",
-   },
 });
 
-const PlayScreen = ({ navigation }: NavigationStackProp) => {
-  const [showHelp, setShowHelp] = useState(false);
+interface IPlayScreenProps {
+  navigation: NavigationStackProp;
+  packet: string;
+}
 
-  const onPressHelpButton = () => {
-    setShowHelp(!showHelp);
-  };
+const PlayScreen = ({ navigation, packet }: IPlayScreenProps) => {
+  let cards = general;
+
+  if (packet === "NTNU") {
+    cards = cards.concat(ntnu);
+  }
 
   return (
     <View style={styles.playscreen}>
-
-      <TopBar navigation={navigation}/>
-
-      <View style={styles.topWrapper}>
-     
-      </View>
-      
-      {!showHelp && <BackGroundSwirls style={styles.background} />}
-      {!showHelp && <Swipe data={data}></Swipe>}
+      <TopBar navigation={navigation} />
+      <BackGroundSwirls style={styles.background}></BackGroundSwirls>
+      <Cards data={general} />
     </View>
   );
 };
