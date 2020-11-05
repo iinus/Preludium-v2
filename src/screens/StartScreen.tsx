@@ -12,6 +12,7 @@ import {
 import { NavigationStackProp } from "react-navigation-stack";
 import BackGroundSwirls from "../assets/BackgroundSwirls.svg";
 import Kork from "../assets/korkBig.svg";
+import Kort from "../assets/kort.svg";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -36,6 +37,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: SCREEN_HEIGHT * 0.2,
     left: SCREEN_WIDTH * 0.296,
+  },
+
+  kort: {
+    position: "absolute",
+    top: SCREEN_HEIGHT * 0.4,
   },
   text: {
     color: "black",
@@ -86,6 +92,7 @@ const StartScreen = ({ navigation }: NavigationStackProp) => {
       <Animated.View style={[styles.logo, { transform: [{ rotate: spin }] }]}>
         <Kork width={175} />
       </Animated.View>
+      <Kort width={175} style={styles.kort} />
       <BackGroundSwirls style={styles.background} />
       <TouchableOpacity
         style={styles.button}
