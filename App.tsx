@@ -17,11 +17,7 @@ const App = () => {
       >
         <Stack.Screen name="Start" component={StartScreen} />
         <Stack.Screen name="ChoosePacket" component={ChoosePacketScreen} />
-        <Stack.Screen
-          name="PlayScreen"
-          component={PlayScreen}
-          //options={{ headerLeft }}
-        />
+        <Stack.Screen name="PlayScreen" component={PlayScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,9 +1,19 @@
 import React from "react";
-import { StyleSheet, Text, Platform, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  Platform,
+  ScrollView,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from "react-native";
+import Cross from "../assets/cross.svg";
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 30,
+    paddingTop: "20%",
+    display: "flex",
+    backgroundColor: "#03444E",
   },
   heading: {
     textAlign: "center",
@@ -35,11 +45,22 @@ const styles = StyleSheet.create({
     }),
     color: "white",
   },
+  close: {
+    alignSelf: "flex-end",
+    marginRight: 20,
+  },
 });
 
-const Rules = () => {
+interface IRuleProps {
+  onPress: (event: GestureResponderEvent) => void;
+}
+
+const Rules = ({ onPress }: IRuleProps) => {
   return (
     <ScrollView style={styles.wrapper}>
+      <TouchableOpacity onPress={onPress}>
+        <Cross style={styles.close} />
+      </TouchableOpacity>
       <Text style={styles.heading}>REGLER</Text>
       <Text style={styles.titles}>PEKELEKEN 👉🏻</Text>
       <Text style={styles.text}>
