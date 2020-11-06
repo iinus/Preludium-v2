@@ -12,9 +12,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          title: "",
-          headerTintColor: "#fff",
-          headerTransparent: true,
+          headerShown: false,
         }}
       >
         <Stack.Screen name="Start" component={StartScreen} />

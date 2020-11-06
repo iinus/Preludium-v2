@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions, Modal, Text } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
 import BackIcon from "../assets/backIcon.svg";
@@ -26,6 +26,10 @@ const styles = StyleSheet.create({
   help: {
     marginRight: SCREEN_WIDTH * 0.05,
   },
+  rules: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 const TopBar = ({ navigation }: NavigationStackProp) => {
@@ -47,10 +51,14 @@ const TopBar = ({ navigation }: NavigationStackProp) => {
         </TouchableOpacity>
         <Logo width={168} />
         <TouchableOpacity onPress={() => onPressHelpButton()}>
-          <Help width={24} height={24} style={[styles.help]} />
+          <Help width={24} height={24} style={styles.help} />
         </TouchableOpacity>
       </View>
-      {showHelp && <Rules />}
+      <Modal visible={showHelp} animationType={"slide"}>
+        <View>
+          <Rules onPress={() => onPressHelpButton()} />
+        </View>
+      </Modal>
     </View>
   );
 };
