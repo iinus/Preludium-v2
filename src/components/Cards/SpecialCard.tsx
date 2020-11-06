@@ -1,78 +1,51 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions, Platform } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import UpperConfetti from "../../assets/UpperConfetti.svg";
 import LowerConfetti from "../../assets/LowerConfetti.svg";
+import Korka from "../../assets/korka.svg";
 
-const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCREEN_HEIGHT = Dimensions.get("screen").height;
 
 const styles = StyleSheet.create({
   textWrapper: {
     display: "flex",
     flexDirection: "column",
-    paddingTop: 80,
+    paddingTop: 60,
+    alignItems: "center",
   },
-  textBefore: {
+  textLeft: {
     fontSize: 24,
     fontWeight: "bold",
-    paddingLeft: 45,
+    alignSelf: "flex-start",
+    paddingLeft: 20,
   },
-  textAfter: {
+  textCenter: {
     fontSize: 24,
     fontWeight: "bold",
-    textAlign: "center",
-    position: "absolute",
-    top: 300,
-    left: SCREEN_WIDTH * 0.25,
-  },
-  k: {
-    position: "absolute",
-    left: 10,
-    top: 150,
-    fontSize: 72,
-    fontWeight: "900",
-  },
-  o: {
-    position: "absolute",
-    left: 55,
-    top: 175,
-    fontSize: 72,
-    fontWeight: "900",
-  },
-  r: {
-    position: "absolute",
-    left: 98,
-    top: 165,
-    fontSize: 64,
-    fontWeight: "900",
-  },
-  ka: {
-    position: "absolute",
-    left: 130,
-    top: 180,
-    fontSize: 72,
-    fontWeight: "900",
-  },
-  lowerConfetti: {
-    position: "absolute",
-    top: 260,
-    marginLeft: 45,
-  },
-  upperConfetti: {
-    marginLeft: 20,
   },
 });
 
-const SpecialCard = () => {
+const SpecialCard = (props: { specialCardQuestion: string }) => {
   return (
-    <View style={styles.textWrapper}>
-      <UpperConfetti style={styles.upperConfetti} />
-      <Text style={styles.textBefore}>Er du ikke</Text>
-      <Text style={styles.k}>k</Text>
-      <Text style={styles.o}>o</Text>
-      <Text style={styles.r}>r</Text>
-      <Text style={styles.ka}>ka?</Text>
-      <LowerConfetti style={styles.lowerConfetti} />
-      <Text style={styles.textAfter}>Alle skåler</Text>
+    <View>
+      {props.specialCardQuestion === "alle" ? (
+        <View style={styles.textWrapper}>
+          <UpperConfetti />
+          <Text style={styles.textLeft}>Er du ikke</Text>
+          <Korka />
+          <LowerConfetti />
+          <Text style={styles.textCenter}>alle skåler</Text>
+        </View>
+      ) : (
+        <View
+          style={[styles.textWrapper, { paddingTop: SCREEN_HEIGHT * 0.15 }]}
+        >
+          <UpperConfetti />
+          <Text style={styles.textCenter}>Vi tar en skål for</Text>
+          <Text style={styles.textCenter}>{props.specialCardQuestion}</Text>
+          <LowerConfetti />
+        </View>
+      )}
     </View>
   );
 };

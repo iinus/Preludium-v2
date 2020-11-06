@@ -30,8 +30,7 @@ interface IPlayScreenProps {
 
 const PlayScreen = ({ navigation, packet }: IPlayScreenProps) => {
   let cards = general;
-  const specialcards = specialCards;
-  cards = specialcards.concat(cards);
+  cards = cards.concat(specialCards);
 
   if (packet === "NTNU") {
     cards = cards.concat(ntnu);

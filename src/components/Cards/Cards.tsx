@@ -166,7 +166,7 @@ const Cards = ({ data }: ICardsProps) => {
                 style={[getCardStyle(position), styles.cardStyle]}
               >
                 {card.type === "Special card" ? (
-                  <SpecialCard />
+                  <SpecialCard specialCardQuestion={card.question} />
                 ) : (
                   <View style={styles.textWrapper}>
                     <Text style={styles.cardType}>

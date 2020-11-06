@@ -17,7 +17,7 @@ export default [
   },
   {
     type: "Special card",
-    question: "alle",
+    question: "Donald Trump",
   },
   {
     type: "Special card",
@@ -33,14 +33,6 @@ export default [
   },
   {
     type: "Special card",
-    question: "alle",
-  },
-  {
-    type: "Special card",
-    question: "alle",
-  },
-  {
-    type: "Special card",
-    question: "alle",
+    question: "Bent Høie",
   },
 ];
