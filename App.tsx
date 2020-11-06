@@ -12,14 +12,16 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          title: "",
-          headerTintColor: "#fff",
-          headerTransparent: true,
+          headerShown: false,
         }}
       >
         <Stack.Screen name="Start" component={StartScreen} />
         <Stack.Screen name="ChoosePacket" component={ChoosePacketScreen} />
-        <Stack.Screen name="PlayScreen" component={PlayScreen} />
+        <Stack.Screen
+          name="PlayScreen"
+          component={PlayScreen}
+          //options={{ headerLeft }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
