@@ -7,7 +7,7 @@
     "privacy": "unlisted",
     "icon": "src/assets/K_icon-2.png",
     "splash": {
-      "image": "src/assets/Kork.png",
+      "image": "src/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
