@@ -43,18 +43,18 @@ const ChoosePacketScreen = ({ navigation }: NavigationStackProp) => {
         <BackGroundSwirls style={styles.background} />
         <Text style={styles.text}>Velg pakke</Text>
         <ActiveButton
-          text="NTNU"
-          textLine="Student i Trondheim"
-          height={106}
-          onPress={() => navigation.navigate("PlayScreen", { packet: "NTNU" })}
-        />
-        <ActiveButton
           text="Generell"
           textLine="For alle"
           height={106}
           onPress={() =>
             navigation.navigate("PlayScreen", { packet: "General" })
           }
+        />
+        <ActiveButton
+          text="NTNU"
+          textLine="Student i Trondheim"
+          height={106}
+          onPress={() => navigation.navigate("PlayScreen", { packet: "NTNU" })}
         />
         <InactiveButton text="UiO" textLine="kommer" />
         <InactiveButton text="BI" textLine="kommer" />
